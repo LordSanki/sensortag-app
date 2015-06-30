@@ -1,2 +1,68 @@
-h1= title
-p Welcome to #{title}
+.container
+  h1(align='center') #{title}
+
+.container
+  .row
+    .col-sm-5
+    .col-sm-4
+      button(id='search' class='btn' onclick='scanForDevices("device_table");') Scan For Devices
+    .col-sm-3
+  .row
+    .col-sm-5
+    .col-sm-2
+      table(class='table' id='device_table' align='center')
+        thead
+          th(align='center') Devices Found
+        tbody
+    .col-sm-5
+
+.container
+  .row
+    .col-sm-1
+      p Message:
+    .col-sm-3
+      #messageLabel
+  .row
+    .col-sm-6
+      .row
+        .col-sm-4
+          p Ambient Temperature:
+        .col-sm-2
+          #aTempLabel
+      .row
+        .col-sm-4
+          p Object Temperature:
+        .col-sm-2
+          #oTempLabel
+      .row
+        .col-sm-4
+          p Pressure:
+        .col-sm-2
+          #pressureLabel
+      .row
+        .col-sm-4
+          p Luxometer:
+        .col-sm-2
+          #luxLabel
+      .row
+        .col-sm-4
+          p Humidity:
+        .col-sm-2
+          #humidityLabel
+    .col-sm-6
+      .row
+        .col-sm-4
+          p Gyroscope:
+        .col-sm-2
+          #gyroLabel
+      .row
+        .col-sm-4
+          p Accelerometer:
+        .col-sm-2
+          #accelLabel
+      .row
+        .col-sm-4
+          p Magnetometer:
+        .col-sm-2
+          #magLabel
+

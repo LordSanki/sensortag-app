@@ -4,7 +4,7 @@
  */
 
 var express = require('express')
-  , routes = require('./routes');
+, routes = require('./routes');
 
 var app = module.exports = express.createServer();
 
@@ -30,7 +30,15 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
+app.get('/scan', routes.scan);
 
-app.listen(3000, function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-});
+var socket_obj = require('./modules/socket_stream/socket_stream.js');
+
+socket_obj.setup(
+  require('socket.io').listen(
+    app.listen(3000, function(){
+      console.log("Express Server Port:%d Mode:%s", app.address().port, app.settings.env);
+    })
+  )
+);
+

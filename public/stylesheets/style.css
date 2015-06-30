@@ -1,8 +1,13 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+.navbar-brand{padding-top:0;padding-left:5;width:74;height:50;}
+.navbar-default{background-color:#0071c5;border-color:#005ea4;background-image:none;}
+.navbar-fixed-top{background-color:#0071c5;border-color:#005ea4;}
+.navbar{margin-bottom:22px;border:1px solid transparent;border-bottom:3px solid rgba(0,80,146,0.75)}
+.container-fluid{background-color:#0071c5;border-color:#005ea4;}
+.container{background-color:#0071c5;border-color:#005ea4;background-clip:content-box;padding:5px}
+.text{color:#fff;font:tahoma;}                                                          
+.btn{background-color:#00aeef;padding:4px 12px; border-radius:3px;}                     
+.btn:hover{background-color:#004280; color:#fff;}                                       
+.btn:focus{color:#fff;}                                                                 
+p{color:#fff;font:tahoma;}                                                              
+h1{color:#fff;font-family:'intel-clear',tahoma,Helvetica,Arial,sans-serif;}
+body{background-color:#0f5fa7;color:#fff;padding-top:70px;}
