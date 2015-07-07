@@ -1,65 +1,55 @@
 .container
   h1(align='center') #{title}
 
-.container
-  .row
-    .col-sm-5
-    .col-sm-4
-      button(id='scanButton' class='btn' onclick='scanForDevices("device_table");') Scan
-    .col-sm-3
-  .row
-    .col-sm-5
-    .col-sm-2
-      table(class='table' id='device_table' align='center')
-        thead
-          th(align='center') Devices Found
-        tbody
-    .col-sm-5
-
-div(class='panel container')
-  div(class='panel-heading')
-      h3(class='panel-title' id='messageLabel')
-  div(class='row')
-    .col-sm-6
-      .row
-        .col-sm-4
-          p Ambient Temperature:
-        .col-sm-2
-          #aTempLabel
-      .row
-        .col-sm-4
-          p Object Temperature:
-        .col-sm-2
-          #oTempLabel
-      .row
-        .col-sm-4
-          p Pressure:
-        .col-sm-2
-          #pressureLabel
-      .row
-        .col-sm-4
-          p Luxometer:
-        .col-sm-2
-          #luxLabel
-      .row
-        .col-sm-4
-          p Humidity:
-        .col-sm-2
-          #humidityLabel
-    .col-sm-6
-      .row
-        .col-sm-4
-          p Gyroscope:
-        .col-sm-2
-          #gyroLabel
-      .row
-        .col-sm-4
-          p Accelerometer:
-        .col-sm-2
-          #accelLabel
-      .row
-        .col-sm-4
-          p Magnetometer:
-        .col-sm-2
-          #magLabel
-
+.container  
+  .tile-left
+    div(style='margin:auto' align='center')
+      button(align='center' style='width:125px;' id='scanButton' class='btn' onclick='scanForDevices("device_table");') Start Scan
+    table(class='table' id='device_table' align='center')
+      tbody
+  div(class='tile-left spacer-left')
+  .tile-left
+    div(class='row')
+      .col-sm-6
+        .row
+          .col-sm-5
+            p Ambient Temperature:
+          .col-sm-1
+            #aTempLabel
+        .row
+          .col-sm-5
+            p Object Temperature:
+          .col-sm-1
+            #oTempLabel
+        .row
+          .col-sm-5
+            p Pressure:
+          .col-sm-1
+            #pressureLabel
+        .row
+          .col-sm-5
+            p Luxometer:
+          .col-sm-1
+            #luxLabel
+        .row
+          .col-sm-5
+            p Humidity:
+          .col-sm-1
+            #humidityLabel
+      .col-sm-6
+        .row
+          .col-sm-5
+            p Gyroscope:
+          .col-sm-1
+            #gyroLabel
+        .row
+          .col-sm-5
+            p Accelerometer:
+          .col-sm-1
+            #accelLabel
+        .row
+          .col-sm-5
+            p Magnetometer:
+          .col-sm-1
+            #magLabel
+  
