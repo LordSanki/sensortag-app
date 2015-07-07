@@ -3,31 +3,26 @@ function scanForDevices(tableID) {
   var tableCode = '';
   $.get('/start_scan');
   $('#scanButton').html('Scanning..');
-  $('#'+tableID+' tbody').html('');
+  $('#'+tableID).html('');
   setTimeout(function(){
     $.get('/stop_scan');
     $.getJSON('/get_device_list', function(data) {
       tableCode = '';
       for(index=0; index<data.length; index++){
-        tableCode += '<tr>';
-        tableCode += '<td><button type=button class=btn id=';
+        tableCode += '<div class=row><button class=btn style="margin-top:3px;margin=bottom:3px;"id=';
         tableCode += data[index].uuid+' onclick=connectDevice(this.id)>';
         tableCode += data[index].uuid.toUpperCase();
-        tableCode += '</button></td>';
-        tableCode += '</tr>';
+        tableCode += '</button></div>';
       }
       //$('#'+tableID+' tbody > tr').remove();
-      $('#'+tableID+' tbody').html(tableCode);
+      $('#'+tableID).html(tableCode);
     });
-    $('#scanButton').html('Scan');
+    $('#scanButton').html('Start Scan');
   },3000);
 };
 
 function connectDevice(id) {
   var socket = io();
-  socket.on('status', function(data) {
-    $('#messageLabel').html('<p>Connected to '+id.toUpperCase()+'</p>');
-  });
   socket.emit('start', {uuid: id});
   socket.on('update', function(data) {
     displayDeviceStream(data);
