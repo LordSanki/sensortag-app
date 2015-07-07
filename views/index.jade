@@ -5,7 +5,7 @@
   .row
     .col-sm-5
     .col-sm-4
-      button(id='search' class='btn' onclick='scanForDevices("device_table");') Scan For Devices
+      button(id='scanButton' class='btn' onclick='scanForDevices("device_table");') Scan
     .col-sm-3
   .row
     .col-sm-5
@@ -16,13 +16,10 @@
         tbody
     .col-sm-5
 
-.container
-  .row
-    .col-sm-1
-      p Message:
-    .col-sm-3
-      #messageLabel
-  .row
+div(class='panel container')
+  div(class='panel-heading')
+      h3(class='panel-title' id='messageLabel')
+  div(class='row')
     .col-sm-6
       .row
         .col-sm-4

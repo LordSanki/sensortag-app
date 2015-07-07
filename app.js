@@ -30,11 +30,13 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-app.get('/scan', routes.scan);
+app.get('/start_scan', routes.start_scan);
+app.get('/stop_scan', routes.stop_scan);
+app.get('/get_device_list', routes.get_device_list);
 
-var socket_obj = require('./modules/socket_stream/socket_stream.js');
+//var socket_obj = require('./modules/socket_stream/socket_stream.js');
 
-socket_obj.setup(
+routes.setup_sockets(
   require('socket.io').listen(
     app.listen(3000, function(){
       console.log("Express Server Port:%d Mode:%s", app.address().port, app.settings.env);

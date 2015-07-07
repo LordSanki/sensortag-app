@@ -1,24 +1,26 @@
+
 function scanForDevices(tableID) {
   var tableCode = '';
-  $.getJSON('/scan', function(data) {
-/*    $.each(data, function() {
-      tableCode += '<tr>';
-      tableCode += '<td><p>'++'</p></td>';
-      tableCode += '<td><p>'+this.uuid+'</p></td>';
-      tableCode += '</tr>';
+  $.get('/start_scan');
+  $('#scanButton').html('Scanning..');
+  $('#'+tableID+' tbody').html('');
+  setTimeout(function(){
+    $.get('/stop_scan');
+    $.getJSON('/get_device_list', function(data) {
+      tableCode = '';
+      for(index=0; index<data.length; index++){
+        tableCode += '<tr>';
+        tableCode += '<td><button type=button class=btn id=';
+        tableCode += data[index].uuid+' onclick=connectDevice(this.id)>';
+        tableCode += data[index].uuid.toUpperCase();
+        tableCode += '</button></td>';
+        tableCode += '</tr>';
+      }
+      //$('#'+tableID+' tbody > tr').remove();
+      $('#'+tableID+' tbody').html(tableCode);
     });
-    */
-    tableCode += '<tr>';
-    // change this into a flip switch and description
-    tableCode += '<td><button type=button class=btn id='
-    tableCode += data.uuid+' onclick=connectDevice(this.id)>'
-    //tableCode += /*data.uuid+*/')>';
-    tableCode += '('+data.name.toUpperCase()+')'+data.uuid.toUpperCase();
-    tableCode += '</button></td>';
-    tableCode += '</tr>';
-    $('#'+tableID+' tbody > tr').remove();
-    $('#'+tableID+' > tbody').append(tableCode);
-  });
+    $('#scanButton').html('Scan');
+  },3000);
 };
 
 function connectDevice(id) {
