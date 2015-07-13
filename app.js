@@ -39,7 +39,9 @@ app.get('/get_device_list', routes.get_device_list);
 routes.setup_sockets(
   require('socket.io').listen(
     app.listen(3000, function(){
-      console.log("Express Server Port:%d Mode:%s", app.address().port, app.settings.env);
+      var date = new Date();
+      console.log("127.0.0.1:%d", app.address().port);
+      console.log(date.getHours()+":"+date.getMinutes()+"@"+date.getDate()+"/"+date.getMonth());
     })
   )
 );
