@@ -8,6 +8,7 @@
     div(id='device_table' align='center')
 
   div(class='tile-left spacer-left')
+
   .tile-left
     div(class='row')
       .col-sm-6
@@ -39,24 +40,85 @@
       .col-sm-6
         .row
           .col-sm-4
-            p Gyroscope: 
+            p GyroscopeX: 
           .col-sm-1
             .spacer-left
           .col-sm-1
-            #gyroLabel
+            #gyroXLabel
         .row
           .col-sm-4
-            p Accelerometer: 
+            p GyroscopeY: 
           .col-sm-1
             .spacer-left
           .col-sm-1
-            #accelLabel
+            #gyroYLabel
         .row
           .col-sm-4
-            p Magnetometer: 
+            p GyroscopeZ: 
           .col-sm-1
             .spacer-left
           .col-sm-1
-            #magLabel
+            #gyroZLabel
+        .row
+          .col-sm-4
+            p AccelerometerX: 
+          .col-sm-1
+            .spacer-left
+          .col-sm-1
+            #accelXLabel
+        .row
+          .col-sm-4
+            p AccelerometerY: 
+          .col-sm-1
+            .spacer-left
+          .col-sm-1
+            #accelYLabel
+        .row
+          .col-sm-4
+            p AccelerometerZ: 
+          .col-sm-1
+            .spacer-left
+          .col-sm-1
+            #accelZLabel
+        .row
+          .col-sm-4
+            p MagnetometerX: 
+          .col-sm-1
+            .spacer-left
+          .col-sm-1
+            #magXLabel
+        .row
+          .col-sm-4
+            p MagnetometerY: 
+          .col-sm-1
+            .spacer-left
+          .col-sm-1
+            #magYLabel
+        .row
+          .col-sm-4
+            p MagnetometerZ: 
+          .col-sm-1
+            .spacer-left
+          .col-sm-1
+            #magZLabel
 
-
+.container
+  .row
+    .col-sm-2
+      button(align='center' style='width:125px;' class='btn' onclick='plotTemp();') Plot Temperature
+    .col-sm-2
+      button(align='center' style='width:125px;' class='btn' onclick='plotPressure();') Plot Pressure
+    .col-sm-2
+      button(align='center' style='width:125px;' class='btn' onclick='plotHumidity();') Plot Humidity
+    .col-sm-2
+      button(align='center' style='width:125px;' class='btn' onclick='plotLux();') Plot Luxometer
+    .col-sm-2
+      button(align='center' style='width:125px;' class='btn' onclick='plotOrient();') Plot Orientation
+.container
+  div(class='tile-left' id = 'atempChart')
+  div(class='tile-left' id = 'otempChart')
+  div(class='tile-left' id = 'pressureChart')
+  div(class='tile-left' id = 'humidityChart')
+  div(class='tile-left' id = 'luxChart')
+  div(class='tile-left' id = 'orientChart')
+  

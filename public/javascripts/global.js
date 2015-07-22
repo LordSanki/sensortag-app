@@ -1,3 +1,8 @@
+var draw3d = '';
+var tempChart = '';
+var pressureChart = '';
+var humidityChart = '';
+var luxChart = '';
 
 function scanForDevices(tableID) {
   var tableCode = '';
@@ -14,7 +19,6 @@ function scanForDevices(tableID) {
         tableCode += data[index].uuid.toUpperCase();
         tableCode += '</button></div>';
       }
-      //$('#'+tableID+' tbody > tr').remove();
       $('#'+tableID).html(tableCode);
     });
     $('#scanButton').html('Start Scan');
@@ -35,9 +39,99 @@ function displayDeviceStream(data) {
   $('#pressureLabel').html('<p>'+data.pressure+'</p>');
   $('#humidityLabel').html('<p>'+data.humidity+'</p>');
   $('#luxLabel').html('<p>'+data.lux+'</p>');
-  $('#gyroLabel').html('<p>'+data.gyro+'</p>');
-  $('#accelLabel').html('<p>'+data.accel+'</p>');
-  $('#magLabel').html('<p>'+data.magnet+'</p>');
+  $('#gyroXLabel').html('<p>'+data.gyro[0]+'</p>');
+  $('#gyroYLabel').html('<p>'+data.gyro[1]+'</p>');
+  $('#gyroZLabel').html('<p>'+data.gyro[2]+'</p>');
+  $('#accelXLabel').html('<p>'+data.accel[0]+'</p>');
+  $('#accelYLabel').html('<p>'+data.accel[1]+'</p>');
+  $('#accelZLabel').html('<p>'+data.accel[2]+'</p>');
+  $('#magXLabel').html('<p>'+data.magnet[0]+'</p>');
+  $('#magYLabel').html('<p>'+data.magnet[1]+'</p>');
+  $('#magZLabel').html('<p>'+data.magnet[2]+'</p>');
 };
+
+function plotLux() {
+  if(luxChart == ''){
+    luxChart = draw_chart('#luxChart',function(){
+      return Number($('#luxLabel').text());},
+      'Ambient Light','Lux');
+  }
+  else{
+    clearInterval(luxChart);
+    destroyChart('#luxChart');
+    luxChart = '';
+  }
+}
+
+function plotHumidity() {
+  if(humidityChart == ''){
+    humidityChart = draw_chart('#humidityChart',function(){
+      return Number($('#humidityLabel').text());},
+      'Humidity','%');
+  }
+  else{
+    clearInterval(humidityChart);
+    destroyChart('#humidityChart');
+    humidityChart = '';
+  }
+}
+
+function plotPressure() {
+  if(pressureChart == ''){
+    pressureChart = draw_chart('#pressureChart',function(){
+      return Number($('#pressureLabel').text());},
+      'Atmospheric Pressure','hPa');
+  }
+  else{
+    clearInterval(pressureChart);
+    pressureChart = '';
+    destroyChart('#pressureChart');
+  }
+}
+
+function plotTemp() {
+  if(tempChart == ''){
+    tempChart = [];
+/*    tempChart.push(draw_chart('#atempChart',function(){
+      return Number($('#aTempLabel').text());},
+      'Ambient Temperature','Celsius'));*/
+    tempChart.push(draw_chart('#otempChart',function(){
+      return Number($('#oTempLabel').text());},
+      'Object Temperature','Celsius'));
+  }
+  else
+  {
+    clearInterval(tempChart[0]);
+    //clearInterval(tempChart[1]);
+    //destroyChart('#atempChart');
+    destroyChart('#otempChart');
+    tempChart = '';
+  }
+}
+
+function plotOrient() {
+  if(draw3d == '') {
+    draw3d = new Draw3D('orientChart');
+    draw3d.init();
+    draw3d.animate();
+    draw3d.render();
+    draw3d.setCallback(function() {
+      if($('#accelXLabel').text() != '') { 
+        return [Number($('#accelXLabel').text()),
+      Number($('#accelYLabel').text()),
+      Number($('#accelZLabel').text()),
+      Number($('#magXLabel').text()),
+      Number($('#magYLabel').text()),
+      Number($('#magZLabel').text())
+      ]; }
+      else { return [0,0,0]; }
+    });
+  }
+  else {
+    draw3d.close();
+    draw3d = '';
+    $('#orientChart').html('');
+  }
+}
 
 

@@ -79,14 +79,14 @@ function start_timer() {
         var device_id = client_list[client_id].device;
         if( device_id in device_list){
           var device = device_list[device_id];
-          var gyro = "X:"+device.gyroX+" Y:"+device.gyroY+" Z:"+device.gyroZ;
-          var accel = "X:"+device.accelX+" Y:"+device.accelY+" Z:"+device.accelZ;
-          var magnet = "X:"+device.magnetX+" Y:"+device.magnetY+" Z:"+device.magnetZ;
           client_list[client_id].socket.emit('update', {
             atemp: device.atemp, otemp: device.otemp
             ,pressure: device.pressure, humidity: device.humidity
-            ,lux: device.lux, gyro: gyro, accel: accel
-            ,magnet: magnet});
+            ,lux: device.lux 
+            ,gyro: [device.gyroX,device.gyroY,device.gyroZ]
+            ,accel: [device.accelX,device.accelY,device.accelZ]
+            ,magnet: [device.magnetX,device.magnetY,device.magnetZ]
+            });
         }
       }
     }, 1000);
