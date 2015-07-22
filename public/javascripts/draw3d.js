@@ -70,16 +70,11 @@ Draw3D.prototype.setCallback = function(func) {
 //
 Draw3D.prototype.set_position = function(ax, ay, az, mx, my, mz){
   var roll = 0, pitch = 0, yaw = 0;
-//  roll = 1.5707963267948966 - Math.acos( Math.max(Math.min(ay,1.0),-1.0) );
-//  pitch = 1.5707963267948966 - Math.acos(Math.max(Math.min(ax,1.0),-1.0));
-  roll = Math.atan(ay/((ay*ay)+(az*az)));
-  pitch = Math.atan(ax/((ax*ax)+(az*az)));
-  var x = mx*Math.cos(pitch) + my*Math.sin(pitch)*Math.sin(roll) + mz*Math.sin(pitch)*Math.cos(roll);
-  var y = my*Math.cos(roll) + mz*Math.sin(roll);
-
-
+  roll = Math.atan2(ay, az);
+  pitch = Math.atan2(-ax, Math.sqrt((ay*ay)+(az*az)));
+  //var x = mx*Math.cos(pitch) + my*Math.sin(pitch)*Math.sin(roll) + mz*Math.sin(pitch)*Math.cos(roll);
+  //var y = my*Math.cos(roll) + mz*Math.sin(roll);
   //yaw = Math.atan2(-y, x);
-  console.log(yaw);
   this.rotate([roll, pitch, yaw]);
 }
 

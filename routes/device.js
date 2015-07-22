@@ -62,23 +62,23 @@ Device.prototype.callbackLux = function(data){
 }
 
 Device.prototype.callbackGyro = function(x,y,z){
-  this.gyroX = x.toFixed(5);
-  this.gyroY = y.toFixed(5);
-  this.gyroZ = z.toFixed(5);
+  this.gyroX = x.toFixed(2);
+  this.gyroY = y.toFixed(2);
+  this.gyroZ = z.toFixed(2);
   kick(this);
 }
 
 Device.prototype.callbackAccel = function(x,y,z){
-  this.accelX = x.toFixed(5);
-  this.accelY = y.toFixed(5);
-  this.accelZ = z.toFixed(5);
+  this.accelX = x.toFixed(2);
+  this.accelY = y.toFixed(2);
+  this.accelZ = z.toFixed(2);
   kick(this);
 }
 
 Device.prototype.callbackMagnet = function(x,y,z){
-  this.magnetX = x.toFixed(5);
-  this.magnetY = y.toFixed(5);
-  this.magnetZ = z.toFixed(5);
+  this.magnetX = x.toFixed(2);
+  this.magnetY = y.toFixed(2);
+  this.magnetZ = z.toFixed(2);
   kick(this);
 }
 
