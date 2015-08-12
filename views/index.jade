@@ -10,115 +10,115 @@
   div(class='tile-left spacer-left')
 
   .tile-left
-    div(class='row')
-      .col-sm-6
-        .row
-          .col-sm-5
-            p Ambient Temperature:
-          .col-sm-1
-            #aTempLabel
-        .row
-          .col-sm-5
-            p Object Temperature:
-          .col-sm-1
-            #oTempLabel
-        .row
-          .col-sm-5
-            p Pressure:
-          .col-sm-1
-            #pressureLabel
-        .row
-          .col-sm-5
-            p Luxometer:
-          .col-sm-1
-            #luxLabel
-        .row
-          .col-sm-5
-            p Humidity:
-          .col-sm-1
-            #humidityLabel
-      .col-sm-6
-        .row
-          .col-sm-4
-            p GyroscopeX: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #gyroXLabel
-        .row
-          .col-sm-4
-            p GyroscopeY: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #gyroYLabel
-        .row
-          .col-sm-4
-            p GyroscopeZ: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #gyroZLabel
-        .row
-          .col-sm-4
-            p AccelerometerX: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #accelXLabel
-        .row
-          .col-sm-4
-            p AccelerometerY: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #accelYLabel
-        .row
-          .col-sm-4
-            p AccelerometerZ: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #accelZLabel
-        .row
-          .col-sm-4
-            p MagnetometerX: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #magXLabel
-        .row
-          .col-sm-4
-            p MagnetometerY: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #magYLabel
-        .row
-          .col-sm-4
-            p MagnetometerZ: 
-          .col-sm-1
-            .spacer-left
-          .col-sm-1
-            #magZLabel
+    table
+      tr
+        td
+          p Ambient Temperature:
+        td
+          #aTempLabel
+      tr
+        td
+          p Object Temperature:
+        td
+          #oTempLabel
+      tr
+        td
+          p Pressure:
+        td
+          #pressureLabel
+      tr
+        td
+          p Luxometer:
+        td
+          #luxLabel
+      tr
+        td
+          p Humidity:
+        td
+          #humidityLabel
+  .tile-left
+    .spacer-left
+  .tile-left
+    table
+      tr
+        td
+          p GyroscopeX: 
+        td
+          #gyroXLabel
+      tr
+        td
+          p GyroscopeY: 
+        td
+          #gyroYLabel
+      tr
+        td
+          p GyroscopeZ: 
+        td
+          #gyroZLabel
+      tr
+        td
+          p AccelerometerX: 
+        td
+          #accelXLabel
+      tr
+        td
+          p AccelerometerY: 
+        td
+          #accelYLabel
+      tr
+        td
+          p AccelerometerZ: 
+        td
+          #accelZLabel
+  .tile-left
+    .spacer-left
+  .tile-left
+    table
+      tr
+        td
+          p MagnetometerX: 
+        td
+          #magXLabel
+      tr
+        td
+          p MagnetometerY: 
+        td
+          #magYLabel
+      tr
+        td
+          p MagnetometerZ: 
+        td
+          #magZLabel
 
 .container
-  .row
-    .col-sm-2
-      button(align='center' style='width:125px;' class='btn' onclick='plotTemp();') Plot Temperature
-    .col-sm-2
-      button(align='center' style='width:125px;' class='btn' onclick='plotPressure();') Plot Pressure
-    .col-sm-2
-      button(align='center' style='width:125px;' class='btn' onclick='plotHumidity();') Plot Humidity
-    .col-sm-2
-      button(align='center' style='width:125px;' class='btn' onclick='plotLux();') Plot Luxometer
-    .col-sm-2
-      button(align='center' style='width:125px;' class='btn' onclick='plotOrient();') Plot Orientation
-.container
-  div(class='tile-left' id = 'atempChart')
-  div(class='tile-left' id = 'otempChart')
-  div(class='tile-left' id = 'pressureChart')
-  div(class='tile-left' id = 'humidityChart')
-  div(class='tile-left' id = 'luxChart')
-  div(class='tile-left' id = 'orientChart')
-  
+  ul(class='nav nav-tabs' role='tablist' id='tabs')
+    li(class='active')
+      a(href='#graphs' role='tab' data-toggle='tab') Live Graphs
+    li
+      a(href='#cloud' role='tab' data-toggle='tab' onclick='$.get("/cloud_config",getCloudConfig)') Cloud Setup
+  div(class='tab-content')
+    div(role='tab-panel' class='tab-pane active' id='graphs')
+      .box-5p
+        .row
+          .col-sm-2
+             .box-1p
+               button(align='center' style='width:125px;' class='btn' onclick='plotTemp();')  Temperature
+             .box-1p
+               button(align='center' style='width:125px;' class='btn' onclick='plotPressure();')  Pressure
+             .box-1p
+               button(align='center' style='width:125px;' class='btn' onclick='plotHumidity();')  Humidity
+             .box-1p
+               button(align='center' style='width:125px;' class='btn' onclick='plotLux();')  Luxometer
+             .box-1p
+               button(align='center' style='width:125px;' class='btn' onclick='plotOrient();')  Orientation
+          .col-sm-10
+            #atempChart
+            #otempChart
+            #pressureChart
+            #humidityChart
+            #luxChart
+            #orientChart
+
+    div(role='tab-panel' class='tab-pane' id='cloud')
+
+

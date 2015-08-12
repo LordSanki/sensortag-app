@@ -33,6 +33,10 @@ app.get('/', routes.index);
 app.get('/start_scan', routes.start_scan);
 app.get('/stop_scan', routes.stop_scan);
 app.get('/get_device_list', routes.get_device_list);
+app.get('/cloud_config', routes.cloud_config);
+app.post('/cloud_token', routes.cloud_token);
+app.get('/cloud_devices', routes.get_cloud_devices);
+app.post('/cloud_devices', routes.post_cloud_devices);
 
 //var socket_obj = require('./modules/socket_stream/socket_stream.js');
 

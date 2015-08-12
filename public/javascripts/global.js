@@ -6,11 +6,11 @@ var luxChart = '';
 
 function scanForDevices(tableID) {
   var tableCode = '';
-  $.get('/start_scan');
+  $.get('/start_scan', function(data){});
   $('#scanButton').html('Scanning..');
   $('#'+tableID).html('');
   setTimeout(function(){
-    $.get('/stop_scan');
+    $.get('/stop_scan', function(data){});
     $.getJSON('/get_device_list', function(data) {
       tableCode = '';
       for(index=0; index<data.length; index++){
@@ -50,7 +50,9 @@ function displayDeviceStream(data) {
   $('#magZLabel').html('<p>'+data.magnet[2]+'</p>');
 };
 
+
 function plotLux() {
+  $('#luxChart').toggleClass('tile-left');
   if(luxChart == ''){
     luxChart = draw_chart('#luxChart',function(){
       return Number($('#luxLabel').text());},
@@ -64,6 +66,7 @@ function plotLux() {
 }
 
 function plotHumidity() {
+  $('#humidityChart').toggleClass('tile-left');
   if(humidityChart == ''){
     humidityChart = draw_chart('#humidityChart',function(){
       return Number($('#humidityLabel').text());},
@@ -77,6 +80,7 @@ function plotHumidity() {
 }
 
 function plotPressure() {
+  $('#pressureChart').toggleClass('tile-left');
   if(pressureChart == ''){
     pressureChart = draw_chart('#pressureChart',function(){
       return Number($('#pressureLabel').text());},
@@ -90,6 +94,7 @@ function plotPressure() {
 }
 
 function plotTemp() {
+  $('#otempChart').toggleClass('tile-left');
   if(tempChart == ''){
     tempChart = [];
 /*    tempChart.push(draw_chart('#atempChart',function(){
@@ -110,6 +115,7 @@ function plotTemp() {
 }
 
 function plotOrient() {
+  $('#orientChart').toggleClass('tile-left');
   if(draw3d == '') {
     draw3d = new Draw3D('orientChart');
     draw3d.init();
