@@ -69,7 +69,7 @@ function cloudDeviceConnect(data){
 }
 
 function cloudDeviceDisconnect(data){
-  $.post('/cloud_devices', {id: data.id.toString(), cloud:'false', gateway:'true'}, getCloudDevices);
+  $.post('/cloud_devices', {id: data, cloud:'false', gateway:'true'}, getCloudDevices);
 }
 
 
